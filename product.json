@@ -98,10 +98,6 @@
       "workspaceTrust",
       "tunnels"
     ],
-    "ms-toolsai.vscode-ai-remote": [
-      "resolvers",
-      "authenticationChallenges"
-    ],
     "ms-python.python": [
       "codeActionAI",
       "contribEditorContentMenu",

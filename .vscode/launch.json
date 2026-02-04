@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}/src/stable/extensions/pentester-theme"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/src/stable/extensions/pentester-theme/out/**/*.js"
+      ],
+      "preLaunchTask": "${workspaceFolder}/src/stable/extensions/pentester-theme: npm: watch"
+    }
+  ]
+}

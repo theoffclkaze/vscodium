@@ -5,16 +5,18 @@
 # to run with Bash: "C:\Program Files\Git\bin\bash.exe" ./dev/build.sh
 ###
 
-export APP_NAME="VSCodium"
-export ASSETS_REPOSITORY="VSCodium/vscodium"
-export BINARY_NAME="codium"
+export APP_NAME="Orakion IDE"
+export APP_NAME_LC="$( echo "${APP_NAME}" | awk '{print tolower($0)}' )"
+export ASSETS_REPOSITORY="Orakion/orakionide"
+export BINARY_NAME="orakion"
 export CI_BUILD="no"
-export GH_REPO_PATH="VSCodium/vscodium"
-export ORG_NAME="VSCodium"
+export GH_REPO_PATH="Orakion/orakionide"
+export ORG_NAME="Orakion"
 export SHOULD_BUILD="yes"
 export SKIP_ASSETS="yes"
 export SKIP_BUILD="no"
 export SKIP_SOURCE="no"
+export TUNNEL_APP_NAME="${BINARY_NAME}-tunnel"
 export VSCODE_LATEST="no"
 export VSCODE_QUALITY="stable"
 export VSCODE_SKIP_NODE_VERSION_CHECK="yes"
@@ -22,8 +24,10 @@ export VSCODE_SKIP_NODE_VERSION_CHECK="yes"
 while getopts ":ilops" opt; do
   case "$opt" in
     i)
-      export ASSETS_REPOSITORY="VSCodium/vscodium-insiders"
-      export BINARY_NAME="codium-insiders"
+      export APP_NAME_LC="$( echo "${APP_NAME}" | awk '{print tolower($0)}' )"
+      export ASSETS_REPOSITORY="PentesterIDE/pentesteride-insiders"
+      export BINARY_NAME="pentesteride-insiders"
+      export TUNNEL_APP_NAME="${BINARY_NAME}-tunnel"
       export VSCODE_QUALITY="insider"
       ;;
     l)

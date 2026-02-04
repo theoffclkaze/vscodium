@@ -89,30 +89,30 @@ if [[ "${VSCODE_QUALITY}" == "insider" ]]; then
   setpath "product" "win32ContextMenu.x64.clsid" "90AAD229-85FD-43A3-B82D-8598A88829CF"
   setpath "product" "win32ContextMenu.arm64.clsid" "7544C31C-BDBF-4DDF-B15E-F73A46D6723D"
 else
-  setpath "product" "nameShort" "VSCodium"
-  setpath "product" "nameLong" "VSCodium"
-  setpath "product" "applicationName" "codium"
-  setpath "product" "linuxIconName" "vscodium"
+  setpath "product" "nameShort" "${APP_NAME}"
+  setpath "product" "nameLong" "${APP_NAME}"
+  setpath "product" "applicationName" "${BINARY_NAME}"
+  setpath "product" "linuxIconName" "${APP_NAME_LC}"
   setpath "product" "quality" "stable"
-  setpath "product" "urlProtocol" "vscodium"
-  setpath "product" "serverApplicationName" "codium-server"
-  setpath "product" "serverDataFolderName" ".vscodium-server"
-  setpath "product" "darwinBundleIdentifier" "com.vscodium"
-  setpath "product" "win32AppUserModelId" "VSCodium.VSCodium"
-  setpath "product" "win32DirName" "VSCodium"
-  setpath "product" "win32MutexName" "vscodium"
-  setpath "product" "win32NameVersion" "VSCodium"
-  setpath "product" "win32RegValueName" "VSCodium"
-  setpath "product" "win32ShellNameShort" "VSCodium"
+  setpath "product" "urlProtocol" "${APP_NAME_LC}"
+  setpath "product" "serverApplicationName" "${BINARY_NAME}-server"
+  setpath "product" "serverDataFolderName" ".${APP_NAME_LC}-server"
+  setpath "product" "darwinBundleIdentifier" "com.${APP_NAME_LC}"
+  setpath "product" "win32AppUserModelId" "${APP_NAME}.${APP_NAME}"
+  setpath "product" "win32DirName" "${APP_NAME}"
+  setpath "product" "win32MutexName" "${APP_NAME_LC}"
+  setpath "product" "win32NameVersion" "${APP_NAME}"
+  setpath "product" "win32RegValueName" "${APP_NAME}"
+  setpath "product" "win32ShellNameShort" "${APP_NAME}"
   setpath "product" "win32AppId" "{{763CBF88-25C6-4B10-952F-326AE657F16B}"
   setpath "product" "win32x64AppId" "{{88DA3577-054F-4CA1-8122-7D820494CFFB}"
   setpath "product" "win32arm64AppId" "{{67DEE444-3D04-4258-B92A-BC1F0FF2CAE4}"
   setpath "product" "win32UserAppId" "{{0FD05EB4-651E-4E78-A062-515204B47A3A}"
   setpath "product" "win32x64UserAppId" "{{2E1F05D1-C245-4562-81EE-28188DB6FD17}"
   setpath "product" "win32arm64UserAppId" "{{57FD70A5-1B8D-4875-9F40-C5553F094828}"
-  setpath "product" "tunnelApplicationName" "codium-tunnel"
-  setpath "product" "win32TunnelServiceMutex" "vscodium-tunnelservice"
-  setpath "product" "win32TunnelMutex" "vscodium-tunnel"
+  setpath "product" "tunnelApplicationName" "${TUNNEL_APP_NAME}"
+  setpath "product" "win32TunnelServiceMutex" "${APP_NAME_LC}-tunnelservice"
+  setpath "product" "win32TunnelMutex" "${APP_NAME_LC}-tunnel"
   setpath "product" "win32ContextMenu.x64.clsid" "D910D5E6-B277-4F4A-BDC5-759A34EEE25D"
   setpath "product" "win32ContextMenu.arm64.clsid" "4852FC55-4A84-4EA1-9C86-D53BE3DF83C0"
 fi
@@ -121,6 +121,9 @@ setpath_json "product" "tunnelApplicationConfig" '{}'
 
 jsonTmp=$( jq -s '.[0] * .[1]' product.json ../product.json )
 echo "${jsonTmp}" > product.json && unset jsonTmp
+
+# Set default color theme
+setpath "product" "defaultTheme" "Dark+"
 
 cat product.json
 # }}}
